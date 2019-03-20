@@ -6,11 +6,21 @@ module Fluent
     class TeamsOutput < Output
       Fluent::Plugin.register_output('teams', self)
 
+      DEFAULT_BUFFER_TYPE = 'memory'.freeze
+
       desc 'Webhook URL'
       config_param :webhook_url, :string
 
       desc 'Message content. Supported erb format and newline character.'
       config_param :text, :string
+
+      desc 'Use buffered processing'
+      config_param :buffered, :bool, :default => false
+
+      config_section :buffer do
+        config_set_default :@type, DEFAULT_BUFFER_TYPE
+        config_set_default :chunk_keys, ['tag']
+      end
 
       def initialize
         super
@@ -37,7 +47,7 @@ module Fluent
       end
 
       def prefer_buffered_processing
-        false
+        @buffered
       end
 
       def process(tag, es)
