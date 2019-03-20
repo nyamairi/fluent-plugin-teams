@@ -3,12 +3,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name = 'fluent-plugin-teams_output'
-  spec.version = "0.1.0"
+  spec.version = '1.0.0'
   spec.authors = ['nyamairi']
   spec.email = ['n.yamairi@gmail.com']
 
-  spec.summary = %q(fluentd output plugin for post to teams_output)
-  spec.description = %q(fluentd output plugin for post to teams_output)
+  spec.summary = 'fluentd output plugin for post to teams_output'
+  spec.description = 'fluentd output plugin for post to teams_output'
   spec.homepage = 'https://github.com/nyamairi/fluent-plugin-teams_output'
   spec.license = 'MIT'
 
