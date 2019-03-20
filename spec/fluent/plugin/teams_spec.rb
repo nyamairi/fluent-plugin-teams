@@ -24,6 +24,18 @@ RSpec.describe Fluent::Plugin::TeamsOutput do
     it 'should get text' do
       expect(instance.text).to eq 'hoge fuga'
     end
+
+    it 'should get false' do
+      expect(instance.buffered).to be_falsy
+    end
+
+    it 'should set as memory buffer type' do
+      expect(instance.buffer_config[:@type]).to include 'memory'
+    end
+
+    it 'should contain tag in chunk_keys' do
+      expect(instance.buffer_config.chunk_keys).to include 'tag'
+    end
   end
 
   describe '#build_payload' do
